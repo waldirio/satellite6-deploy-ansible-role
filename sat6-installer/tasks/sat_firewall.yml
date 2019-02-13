@@ -1,0 +1,22 @@
+- yum:
+    name: firewalld
+    state: latest
+
+- service:
+    name: firewalld
+    state: started
+    enabled: yes
+
+- firewalld:
+    immediate: yes
+    permanent: yes
+    port: "{{ item }}"
+    state: enabled
+  with_items: "{{ sat_to_caps_ports + sat_to_client_ports }}"
+
+- firewalld:
+    immediate: yes
+    permanent: yes
+    service: "{{ item }}"
+    state: enabled
+  with_items: "{{ sat_to_caps_svcs + sat_to_client_svcs }}"

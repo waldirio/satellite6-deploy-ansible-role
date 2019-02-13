@@ -1,0 +1,18 @@
+---
+
+packages:
+  mandatory:
+    - chrony
+    - sos
+    - iputils
+    - libselinux-python
+    - python-firewall
+
+  optional:
+    - tmux
+
+  core:
+    satellite:
+      - satellite
+    capsule:
+      - satellite-capsule

@@ -1,0 +1,23 @@
+---
+
+# Vars to include
+- include_vars: sat_caps_ports.yml
+- include_vars: packages.yml
+- include_vars: services.yml
+- include_vars: satellite_admin.yml
+- include_vars: satellite_version.yml
+
+# Tasks to include
+- include: announcement.yml
+- include: rhsm_register.yml
+- include: sat_firewall.yml
+- include: install_mandatory_packages.yml
+- include: install_core_packages.yml
+- include: set_hostname.yml
+- include: satellite-installer.yml
+# ...
+
+
+
+
+#vim: ai ts=2 sw=2 et

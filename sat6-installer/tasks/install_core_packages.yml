@@ -1,0 +1,12 @@
+- name: Update the system before next step
+  yum:
+    name: '*'
+    state: latest
+  tags:
+    - task_update_system
+
+- name: Install core packages
+  yum:
+    #name: "{{ item }}"
+    name: "{{ packages.core.satellite }}"
+    state: latest
