@@ -1,0 +1,27 @@
+---
+- name: Register this system to Red Hat
+  redhat_subscription:
+    state: present
+    username: "{{ username }}"
+    password: "{{ password }}"
+    pool: "{{ rhsm.pool}}"
+    autosubscribe: false
+  register: rhsm_register_result
+  tags:
+    - rhsm_repos
+    - satellite
+
+- name: Disable all repos
+  rhsm_repository:
+    name: "*"
+    state: absent
+
+- name: Enable only the necessary repos
+  rhsm_repository:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - rhel-{{ baseos_version }}-server-rpms
+    - rhel-server-rhscl-{{ baseos_version }}-rpms
+    - rhel-{{ baseos_version }}-server-satellite-{{ sat_version }}-rpms
+

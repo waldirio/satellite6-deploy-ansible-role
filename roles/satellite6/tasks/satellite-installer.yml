@@ -1,6 +1,5 @@
 ---
-
-- name: Chama o satellite-installer
+- name: Call satellite-installer
   command: satellite-installer --scenario satellite
            --foreman-admin-username "{{ satellite_admin_username }}"
            --foreman-admin-password "{{ satellite_admin_password }}"

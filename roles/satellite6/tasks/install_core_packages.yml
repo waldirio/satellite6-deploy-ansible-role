@@ -7,6 +7,5 @@
 
 - name: Install core packages
   yum:
-    #name: "{{ item }}"
     name: "{{ packages.core.satellite }}"
     state: latest

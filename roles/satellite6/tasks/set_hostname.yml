@@ -1,0 +1,9 @@
+---
+- name: "Set hostname to {{ sat_hostname }}"
+  hostname:
+    name: "{{ sat_hostname }}"
+
+#- name: Hostname on /etc/hosts
+#  lineinfile:
+#    path: /etc/hosts
+#    line: 

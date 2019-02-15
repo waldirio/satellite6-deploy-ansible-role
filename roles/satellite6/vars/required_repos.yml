@@ -3,7 +3,7 @@ required_yum_repos:
   allversions:
     - rhel-7-server-rpms
     - rhel-server-rhscl-7-rpms
-    - rhel-7-server-satellite-{{ satellite_version_xy }}-rpms
+    - rhel-7-server-satellite-{{ sat_version }}-rpms
   sat63:
     - rhel-7-server-satellite-maintenance-6-rpms
     - rhel-7-server-satellite-6.3-puppet4-rpms

@@ -1,7 +1,6 @@
 ---
 - name: Install mandatory packages
   yum:
-    #name: "{{ item }}"
     name: "{{ packages.mandatory }}"
     state: latest
 

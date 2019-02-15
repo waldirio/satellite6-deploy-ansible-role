@@ -2,9 +2,9 @@
 
 - name: What are we gonna do
   debug:
-    vars:
-      - satellite_version_xy
-      - satellite_hostname
-      - rhsm.username
+    var:
+      - sat_version
+      - sat_hostname
+      - username
       - satellite_admin_username
       - satellite_admin_password
