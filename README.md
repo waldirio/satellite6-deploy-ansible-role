@@ -30,16 +30,26 @@ Ok, at this moment we are read to go. Let's take a look on the command below:
 As you can see, there are some additional info under "". I'll explain below.
 
 - Once we are using the encrypted file `ansible-vault` will be necessary this flag to prompt the password
+```
 --ask-vault-pass
+```
 
 - Remember the inventory file? node is the name of the group, if I add some additional IP address or FQDN under this group, the playbook will be send to all of them.
+```
 node_name=node 
+```
 
 - Here is the node FQDN
+```
 sat_hostname=wallsat64.usersys.redhat.com
+```
 
 - Here is the Satellite version to be installed (valid are 6.4, 6.3, 6.2, 6.1 and 6.0)
+```
 sat_version=6.4
+```
 
 - Here is the Base OS release (valid are 7 and 6)
+```
 baseos_version=7
+```
