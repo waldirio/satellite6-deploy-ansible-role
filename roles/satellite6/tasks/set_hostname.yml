@@ -1,0 +1,20 @@
+---
+- name: "Set hostname to {{ sat_hostname }}"
+  hostname:
+    name: "{{ sat_hostname }}"
+
+- name: Hostname on /etc/hosts (iface ens192)
+  lineinfile:
+    path: /etc/hosts
+    state: present
+    line: "{{ ansible_facts.ens192.ipv4.address }} {{ ansible_facts.nodename }} {{ ansible_facts.hostname }}"
+  when: >
+    'ens192' in ansible_interfaces
+
+- name: Hostname on /etc/hosts (iface ethX)
+  lineinfile:
+    path: /etc/hosts
+    state: present
+    line: "{{ ansible_facts.eth0.ipv4.address }} {{ ansible_facts.nodename }} {{ ansible_facts.hostname }}"
+  when: >
+    'eth0' in ansible_interfaces

@@ -1,0 +1,23 @@
+---
+
+- roles:
+   - satellite6
+  vars:
+    baseos_version: "7"
+    sat_version: "6.4"
+    sat_hostname: "changeme"
+    node_name: "hostname"
+    username: "changeme"
+    password: "changeme"
+
+    rhsm:
+      username: "{{ username }}"
+      password: "{{ password }}"
+      # Use a regex for the pool. The regex will match the subscription name.
+      # e.g. ".*Satellite.*" if you have a subscription named "something something Satellite something"
+      pool: "Red Hat Satellite * Subscription"
+  
+  vars_files:
+    - vars/secret.yml
+
+  hosts: "{{ node_name }}"

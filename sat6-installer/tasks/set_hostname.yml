@@ -1,5 +1,0 @@
----
-
-- name: "Set hostname to {{ satellite_hostname }}"
-  hostname:
-    name: "{{ satellite_hostname }}"
