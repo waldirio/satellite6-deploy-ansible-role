@@ -4,12 +4,18 @@
     state: present
     username: "{{ username }}"
     password: "{{ password }}"
-    pool: "{{ rhsm.pool}}"
     autosubscribe: false
   register: rhsm_register_result
   tags:
     - rhsm_repos
     - satellite
+
+- name: Remove Entitlement
+  shell: subscription-manager remove --all
+
+- name: Attach the correct entitlement
+  shell: |
+    pool_id=$(subscription-manager list --all --available --matches="{{ rhsm.pool }}" | grep Pool | head -n1 | awk '{print $3}') && subscription-manager attach --pool $pool_id
 
 - name: Disable all repos
   rhsm_repository:
@@ -24,4 +30,6 @@
     - rhel-{{ baseos_version }}-server-rpms
     - rhel-server-rhscl-{{ baseos_version }}-rpms
     - rhel-{{ baseos_version }}-server-satellite-{{ sat_version }}-rpms
+    - rhel-{{ baseos_version }}-server-satellite-maintenance-6-rpms
+    - rhel-{{ baseos_version }}-server-ansible-2.6-rpms
 

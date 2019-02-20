@@ -15,7 +15,7 @@
       password: "{{ password }}"
       # Use a regex for the pool. The regex will match the subscription name.
       # e.g. ".*Satellite.*" if you have a subscription named "something something Satellite something"
-      pool: "Red Hat Satellite.*Subscription"
+      pool: "Red Hat Satellite * Subscription"
   
   vars_files:
     - vars/secret.yml
